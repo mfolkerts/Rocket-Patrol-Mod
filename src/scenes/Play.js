@@ -9,8 +9,14 @@ class Play extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('spaceship2', './assets/spaceship2.png');
         this.load.image('starfield', './assets/starfield.png');
+        this.load.image('wizard', './assets/wizard.png');
+
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+        this.load.spritesheet('dragon', './assets/dragon.png', {frameWidth: 32, frameHeight: 32, startFrame: 0, endFrame: 2});
+        this.load.spritesheet('dragonbig', './assets/dragonbig.png', {frameWidth: 48, frameHeight: 48, startFrame: 0, endFrame: 2});
+        this.load.spritesheet('fire', './assets/fire.png', {frameWidth: 16, frameHeight: 16, startFrame: 0, endFrame: 2});
+
     }
 
     create() {
@@ -29,10 +35,10 @@ class Play extends Phaser.Scene {
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
         // add Spaceships (x3)
-        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0);
-        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0);
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0);
-        this.ship04 = new Spaceship2(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship2', 0, 40).setOrigin(0,0);
+        this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'dragonbig', 0, 30).setOrigin(0, 0);
+        this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'dragonbig', 0, 20).setOrigin(0,0);
+        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'dragonbig', 0, 10).setOrigin(0,0);
+        this.ship04 = new Spaceship2(this, game.config.width + borderUISize*6, borderUISize*4, 'dragon', 0, 40).setOrigin(0,0);
 
         // define keys
         keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
@@ -46,6 +52,7 @@ class Play extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
             frameRate: 30
         });
+        
 
         // initialize score
         this.p1Score = 0;

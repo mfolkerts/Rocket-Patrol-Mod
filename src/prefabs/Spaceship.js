@@ -5,6 +5,13 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         scene.add.existing(this);   // add to existing scene
         this.points = pointValue;   // store pointValue
         this.moveSpeed = game.settings.spaceshipSpeed;         // pixels per frame
+        this.anims.create({
+            key: 'dragonflybig',
+            frames: this.anims.generateFrameNumbers('dragonbig', { start: 0, end: 1, first: 0}),
+            frameRate: 2,
+            repeat: -1
+        });
+        this.anims.play('dragonflybig');
     }
 
     update() {
